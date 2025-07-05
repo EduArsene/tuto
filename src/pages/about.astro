@@ -1,0 +1,102 @@
+---
+import { fade } from "astro:transitions";
+import '../styles/global.css';
+import Layout from "../layouts/Layout.astro";
+
+const tituloPagina = "Sobre mí - Astro Basics";
+const descripcionPagina = "Learn more about me and my Astro site!";
+
+const yo ={
+    nombre: "Eduardo",
+    edad: 23,
+    ocupacion: "Ingeniero de Sistemas",
+    intereses: ["Tecnologías", "Viajes", "Cocina","fútbol"],
+}
+const skills = [
+    { nombre: "JavaScript", nivel: "Principiante" },
+    { nombre: "Python", nivel: "Intermedio" },
+    { nombre: "Astro", nivel: "Principiante" },
+];
+
+const contento = true;
+const goal = 4;
+//variable css
+const cssVariable = "white";
+const cssQuitarDecoracion = "none";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{tituloPagina}</title>
+    <style define:vars={{ cssVariable,cssQuitarDecoracion }}>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: rgb(136, 136, 136);
+            color: #ffffff;
+        }
+        ul {
+            margin: 4px;
+            padding: 4px;
+            padding: 0;
+        }
+        li {
+            margin: 5px 0;
+        }
+        a {
+            color: #0d5097;
+            align-items: start;
+            justify-items: start;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        h1, h2 {
+            color: #da0000;/
+        }
+        .skills {
+            color: var(--cssVariable);
+            background-color: #333;
+            padding: 1 0px;
+            list-style: var(--cssQuitarDecoracion);
+        }
+    </style>
+  </head>
+  <Layout>
+    <body>
+    <h1>{tituloPagina}</h1>
+    <p>{descripcionPagina}</p>
+
+    <ul >
+        <li>Mi nombre es {yo.nombre}</li>
+        <p>Tengo {yo.edad} años. Soy {yo.ocupacion}</p>
+        {
+            yo.intereses.length >= 2 &&
+            (
+                <ul>
+                    {yo.intereses.map((interes) => (
+                        <li >{interes}</li>
+                    ))}
+                </ul>
+            )
+        }
+        <p>mis skill son</p>
+        <ul class="skills">
+            {skills.map((skill) => (
+                <li>
+                    {skill.nombre} - {skill.nivel}
+                </li>
+            ))}
+        </ul>
+        {contento ? <p>Estoy contento</p>: <p>Estoy triste</p>}
+        {goal === 4 ? <p>que será goal</p>:<p>flojera de averiguar</p>}
+    </ul>
+  </body>
+  </Layout>
+</html>
