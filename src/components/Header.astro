@@ -1,0 +1,16 @@
+---
+import Navegation from "./navegation.astro"
+import Hamburguer from "./Hamburguer.astro"
+---
+<header>
+<header>
+  <nav>
+    <Hamburguer/>
+    <Navegation/>
+  </nav>
+</header>
+  <script>
+    document.querySelector('.hamburger')?.addEventListener('click', () => {
+      document.querySelector('.nav-links')?.classList.toggle('expanded');
+    });
+  </script>

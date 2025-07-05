@@ -1,3 +1,16 @@
 ---
-const github = "www.github.com/eduarsene";
+import Social from "./Social.astro"
 ---
+<style>
+  footer {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+</style>
+<footer>
+  <p>
+    Conozca mas sobre mí en
+    <Social plataforma = "github" userName = "eduarsene"></Social>
+  </p>
+</footer>
